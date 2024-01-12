@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function pokemonReducer(state = initialState, action) {
-  console.log("State,", action.payload);
   switch (action.type) {
     case SET_POKEMONS:
       return {

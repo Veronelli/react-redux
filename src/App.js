@@ -37,8 +37,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setPokemons: (value) => {
-    console.log(value);
-    return dispatch(setPokemonsAction(value));
+    return dispatch(setPokemons(value));
   },
 });
 
