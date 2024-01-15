@@ -3,7 +3,7 @@ import { Col } from "antd";
 import { Searcher } from "./components/Searcher";
 import PokemonCard from "./components/PokemonCard";
 import PokemonList from "./components/PokemonList/PokemonList";
-import getPokemons from "./utils/api/pokeAPI";
+import {getPokemons,getPokemonDetails} from "./utils/api/pokeAPI";
 import { useEffect, useState } from "react";
 import { setPokemons } from "./actions";
 import { connect, useSelector, useDispatch } from "react-redux";
@@ -14,7 +14,12 @@ function App() {
   useEffect(() => {
     const requestPokemons = async () => {
       const pokemonsResponse = await getPokemons();
-       dispatch(setPokemons(pokemonsResponse));
+      const pokemonDetailed = await Promise.all(pokemonsResponse.map(async (pokemon) => {
+        const pokemonDetails = getPokemonDetails(pokemon);
+        return pokemonDetails;
+      
+      }))
+      dispatch(setPokemons(pokemonDetailed));
     };
     requestPokemons();
   }, []);
