@@ -9,14 +9,14 @@ import {
   compose,
   applyMiddleware,
 } from "redux";
-import { logger, newPokemon, setPokemonNumber } from "./middleware/index";
+import { logger, newPokemon, setPokemonNumber, setPokemonImage } from "./middleware/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const composedEnhacers = compose(
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
-  applyMiddleware(logger, newPokemon, setPokemonNumber)
+  applyMiddleware(logger, newPokemon, setPokemonNumber,setPokemonImage)
 );
-const store = createStore(pokemonReducer, composedEnhacers);
+const store = createStore(pokemonReducer, composedEnhacers,);
 
 root.render(
   <React.StrictMode>

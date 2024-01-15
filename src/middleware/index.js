@@ -18,4 +18,13 @@ const setPokemonNumber = (store) => (next) => (action) => {
   next(action);
 };
 
-export { logger, newPokemon, setPokemonNumber };
+const setPokemonImage = (store) => (next) => (action) => {
+  action.action.payload = action.action.payload.map((pokemon, index) => ({
+    ...pokemon,
+    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`
+  }))
+  console.log(action.action.payload)
+  next(action)
+}
+
+export { logger, newPokemon, setPokemonNumber, setPokemonImage };

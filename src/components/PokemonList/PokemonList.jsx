@@ -7,7 +7,7 @@ export default function PokemonList({ pokemons, CardComponent }) {
         <CardComponent
           key={pokemon.id}
           title={pokemon.name}
-          img={pokemon.url}
+          img={pokemon.image}
           description={pokemon.description}
         />
       ))}
