@@ -10,12 +10,14 @@ import {
   applyMiddleware,
 } from "redux";
 import { logger, setPokemonNumber } from "./middleware/index";
+import {thunk} from "redux-thunk";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const composedEnhacers = compose(
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
-  applyMiddleware(logger, setPokemonNumber)
+const customCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composedEnhacers = customCompose(
+  applyMiddleware(thunk, logger, setPokemonNumber)
 );
+
 const store = createStore(pokemonReducer, composedEnhacers);
 
 root.render(

@@ -3,9 +3,9 @@ import { Col } from "antd";
 import { Searcher } from "./components/Searcher";
 import PokemonCard from "./components/PokemonCard";
 import PokemonList from "./components/PokemonList/PokemonList";
-import {getPokemons,getPokemonDetails} from "./utils/api/pokeAPI";
-import { useEffect, useState } from "react";
-import { setPokemons } from "./actions";
+import { getPokemons } from "./utils/api/pokeAPI";
+import { useEffect } from "react";
+import { getPokemonWithDetails, setPokemons } from "./actions";
 import { connect, useSelector, useDispatch } from "react-redux";
 
 function App() {
@@ -14,12 +14,7 @@ function App() {
   useEffect(() => {
     const requestPokemons = async () => {
       const pokemonsResponse = await getPokemons();
-      const pokemonDetailed = await Promise.all(pokemonsResponse.map(async (pokemon) => {
-        const pokemonDetails = getPokemonDetails(pokemon);
-        return pokemonDetails;
-      
-      }))
-      dispatch(setPokemons(pokemonDetailed));
+      dispatch(getPokemonWithDetails(pokemonsResponse));
     };
     requestPokemons();
   }, []);

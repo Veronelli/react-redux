@@ -1,7 +1,18 @@
 import { SET_POKEMONS } from "../types/Pokemon";
+import { getPokemonDetails } from "../utils/api/pokeAPI";
 
-export const setPokemons = (payload)=>{
-    return ({
+export const setPokemons = (payload) => {
+  return {
     type: SET_POKEMONS,
-    payload
-})}
+    payload,
+  };
+};
+
+export const getPokemonWithDetails =
+  (pokemons = []) =>
+  async (dispatch) => {
+    const PokemonDetails = await Promise.all(
+      pokemons.map((pokemon) => getPokemonDetails(pokemon))
+    );
+    dispatch(setPokemons(PokemonDetails));
+  };

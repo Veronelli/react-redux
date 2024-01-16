@@ -5,13 +5,14 @@ const logger = (store) => (next) => (action) => {
 
 const newPokemon = (store) => (next) => (action) => {
   const newPokemon = { name: "PEPE" };
-  const pokemonsUpdated = [newPokemon, ...action.action.payload];
-  action.action.payload = pokemonsUpdated;
+  const pokemonsUpdated = [newPokemon, ...action.payload];
+  action.payload = pokemonsUpdated;
   next(action);
 };
 
 const setPokemonNumber = (store) => (next) => (action) => {
-  action.action.payload = action.action.payload.map((pokemon, index) => ({
+  console.log(action)
+  action.payload = action.payload.map((pokemon, index) => ({
     ...pokemon,
     name: `${index} - ${pokemon.name}`,
   }));
@@ -19,11 +20,11 @@ const setPokemonNumber = (store) => (next) => (action) => {
 };
 
 const setPokemonImage = (store) => (next) => (action) => {
-  action.action.payload = action.action.payload.map((pokemon, index) => ({
+  action.payload = action.payload.map((pokemon, index) => ({
     ...pokemon,
     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`
   }))
-  console.log(action.action.payload)
+  console.log(action.payload)
   next(action)
 }
 
