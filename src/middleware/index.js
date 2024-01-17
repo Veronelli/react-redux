@@ -11,7 +11,6 @@ const newPokemon = (store) => (next) => (action) => {
 };
 
 const setPokemonNumber = (store) => (next) => (action) => {
-  console.log(action)
   action.payload = action.payload.map((pokemon, index) => ({
     ...pokemon,
     name: `${index} - ${pokemon.name}`,
@@ -20,6 +19,7 @@ const setPokemonNumber = (store) => (next) => (action) => {
 };
 
 const setPokemonImage = (store) => (next) => (action) => {
+  console.log(action)
   action.payload = action.payload.map((pokemon, index) => ({
     ...pokemon,
     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`

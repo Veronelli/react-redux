@@ -1,4 +1,4 @@
-import { SET_POKEMONS } from "../types/Pokemon";
+import { SET_LOADING, SET_POKEMONS } from "../types/Pokemon";
 import { getPokemonDetails } from "../utils/api/pokeAPI";
 
 export const setPokemons = (payload) => {
@@ -7,6 +7,13 @@ export const setPokemons = (payload) => {
     payload,
   };
 };
+
+export const setLoading = (payload)=>{
+  return {
+    type: SET_LOADING,
+    payload
+  }
+}
 
 export const getPokemonWithDetails =
   (pokemons = []) =>
