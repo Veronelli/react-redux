@@ -10,6 +10,7 @@ export default function PokemonList({ pokemons, CardComponent }) {
           img={pokemon.sprites.front_default}
           description={pokemon.description}
           abilities={pokemon.abilities}
+          id={pokemon.id}
         />
       ))}
     </div>

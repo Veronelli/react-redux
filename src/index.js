@@ -15,7 +15,7 @@ import {thunk} from "redux-thunk";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const customCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const composedEnhacers = customCompose(
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk)
 );
 
 const store = createStore(pokemonReducer, composedEnhacers);
