@@ -9,9 +9,8 @@ import { getPokemonWithDetails, setLoading, setPokemons } from "./actions";
 import { connect, useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const pokemons = useSelector((state) => state.pokemons);
-  const loading = useSelector((state) => state.loading);
-  const favoritePokemons = useSelector((state) => state.favoritePokemons);
+  const pokemons = useSelector((state) => state.get("pokemons")).toJS();
+  const loading = useSelector((state) => state.get("loading"));
   const dispatch = useDispatch();
   useEffect(() => {
     const requestPokemons = async () => {
@@ -22,10 +21,13 @@ function App() {
     };
     requestPokemons();
   }, []);
-);
   return (
     <div className="App">
-      <Col span={8} offset={8} style={{marginBottom:10, display:"flex", flexDirection:"column"}}>
+      <Col
+        span={8}
+        offset={8}
+        style={{ marginBottom: 10, display: "flex", flexDirection: "column" }}
+      >
         <h1>Pokedux</h1>
         <Searcher />
         {!loading && (

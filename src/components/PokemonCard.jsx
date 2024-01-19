@@ -20,7 +20,7 @@ function AbilityList(abilities) {
 export default function PokemonCard(props) {
   const dispatch = useDispatch();
 
-
+console.log(props)
   const handlerOnClick = () => {
     dispatch(setFavorite(props.id))
   }
@@ -29,7 +29,7 @@ export default function PokemonCard(props) {
       title={props.title}
       style={{ width: "100%" }}
       cover={<img src={props.img} />}
-      extra={<StartButton onClick={handlerOnClick}/>}
+      extra={<StartButton favorite={props.favorite} onClick={handlerOnClick}/>}
     >
       <Meta description={props.description} />
       {props.abilities && <AbilityList abilities={props.abilities} />}

@@ -11,6 +11,7 @@ export default function PokemonList({ pokemons, CardComponent }) {
           description={pokemon.description}
           abilities={pokemon.abilities}
           id={pokemon.id}
+          favorite={pokemon.favorite}
         />
       ))}
     </div>
