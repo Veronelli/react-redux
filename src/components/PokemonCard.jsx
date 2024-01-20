@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { Card } from "antd";
-import { StarOutlined } from "@ant-design/icons";
 import Meta from "antd/lib/card/Meta";
 import StartButton from "./StartButton";
 import { setFavorite } from '../actions';

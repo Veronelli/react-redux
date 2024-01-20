@@ -1,22 +1,14 @@
 import { fromJS } from "immutable";
-import { SET_FAVORITE, SET_LOADING, SET_POKEMONS } from "../types/Pokemon";
+import { SET_FAVORITE, SET_POKEMONS } from "../types/Pokemon";
 
 const initialState = fromJS({
   pokemons: [],
-  loading: false,
-  favoritePokemons: [],
 });
 
 export default function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case SET_POKEMONS:
-      // return {
-      //   ...state,
-      //   pokemons: action.payload,
-      // };
       return state.setIn(["pokemons"], fromJS(action.payload));
-    case SET_LOADING:
-      return state.set("loading", fromJS(action.payload));
     case SET_FAVORITE:
       const currentPokemonIndex = state
         .get("pokemons")
