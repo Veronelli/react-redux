@@ -13,7 +13,6 @@ export default function pokemonReducer(state = initialState, action) {
       const currentPokemonIndex = state
         .get("pokemons")
         .findIndex((pokemon) => pokemon.get("id") === action.payload);
-      console.log(currentPokemonIndex)
         if (currentPokemonIndex <= 0) return state;
       const isFavorite = state.getIn([
         "pokemons",

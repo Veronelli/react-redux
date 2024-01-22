@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 import StartButton from "./StartButton";
-import { setFavorite } from '../actions';
+import { setFavorite } from '../slices/dataSlice';
 
 function AbilityList(abilities) {
   return (
@@ -19,7 +19,6 @@ function AbilityList(abilities) {
 export default function PokemonCard(props) {
   const dispatch = useDispatch();
 
-console.log(props)
   const handlerOnClick = () => {
     dispatch(setFavorite(props.id))
   }
